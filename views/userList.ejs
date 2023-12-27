@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>View Users</title>
+    <link rel="stylesheet" href="/public/style/userList.css" />
+  </head>
+  <body>
+    <nav>
+      <div class="container">
+        <ul>
+          <li><a href="/adminHome">Home</a></li>
+          <li><a href="/admin/products">View Products</a></li>
+          <li><a href="/admin/users">View Users</a></li>
+          <li class="logout"><a href="/logout">Logout</a></li>
+        </ul>
+      </div>
+    </nav>
+    <div class="container">
+        <h1>User List</h1>
+        <table class="user-table">
+          <thead>
+            <tr>
+              <th>Username</th>
+              <th>Email</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% users.forEach(user => { %>
+              <tr class="l2">
+                <td><%= user.username %></td>
+                <td><%= user.email %></td>
+                <td>
+                  <form method="POST" action="/admin/users/<%= user._id %>?_method=DELETE">
+                    <button type="submit">Delete</button>
+                  </form>
+                </td>
+              </tr>
+            <% }); %>
+          </tbody>
+        </table>
+    </div>
+  </body>
+</html>

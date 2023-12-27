@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/public/style/productlist.css">
+</head>
+<body>
+  <nav>
+    <div class="container">
+      <ul>
+        <li><a href="/adminHome">Home</a></li>
+        <li><a href="/admin/products">View Products</a></li>
+        <li><a href="/admin/users">View Users</a></li>
+        <li><a href="/admin/addProduct">Add New Product</a></li>
+        <li class="logout"><a href="/logout">Logout</a></li>
+      </ul>
+    </div>
+  </nav>
+    <div class="container">
+        <h1>Product List</h1>
+        <table class="product-table2">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Description</th>
+              <th>Price</th>
+              <th>Image</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% products.forEach(product => { %>
+              <tr class="l2">
+                <td><%= product.name %></td>
+                <td><%= product.description %></td>
+                <td><%= product.price %></td>
+                <td><img src="<%= product.imageUrl %>" alt="<%= product.name %> Image" height="50"></td>
+                <td>
+                    
+                    <form method="GET" action="/admin/products/<%= product._id %>/edit" style="display:inline;">
+                      <button type="submit">Update</button>
+                    </form>
+                    <form method="POST" action="/admin/deleteProduct/<%= product._id %>?_method=DELETE" style="display:inline;">
+                      <button type="submit">Delete</button>
+                    </form>
+                  </td>
+              </tr>
+            <% }); %>
+          </tbody>
+        </table>
+      </div>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product List</title>
+    <link rel="stylesheet" href="/public/style/productlist.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Product List</h1>
+        <table class="product-table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Price</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% products.forEach(product => { %>
+                    <tr class="product-row">
+                        <td><a href="/productDetails/<%= product._id %>"><%= product.name %></a></td>
+                        <td>$<%= product.price.toFixed(2) %></td>
+                    </tr>
+                <% }); %>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
