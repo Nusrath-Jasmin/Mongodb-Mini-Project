@@ -9,7 +9,7 @@ module.exports = (app) => {
         : ""
     )
     .then((data) => {
-      app.listen(process.env.PORT || 4001);
+      app.listen(process.env.PORT || 4000);
       console.log("server started");
     })
     .catch((err) => {

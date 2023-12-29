@@ -13,9 +13,6 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  address:{
-    type:String
-  },
   userType: {
     type: String,
     default: "user"

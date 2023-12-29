@@ -148,15 +148,18 @@ updateProduct = async (req, res) => {
     if (req.file) {
       existingProduct.imageUrl = `/uploads/${req.file.filename}`;
     }
+    else{
+      existingProduct.imageUrl=existingProduct.imageUrl
+    }
 
     // Save the updated product details
     await existingProduct.save();
 
     // Redirect to the product list page or show a success message
-    res.redirect("/admin/products");
+    return res.redirect("/admin/products");
   }
   else{
-    res.redirect("/login");
+    return res.redirect("/login");
   }
   } catch (error) {
     // Handle errors

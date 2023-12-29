@@ -26,7 +26,7 @@ router.post('/admin/products', upload.single('productImage'),adminContoller.addN
 router.get('/admin/products/:id/edit', adminContoller.productUpdateForm);
 
 // updating product
-router.post('/admin/products/:id', adminContoller.updateProduct);
+router.post('/admin/products/:id', upload.single('productImage'), adminContoller.updateProduct);
 
 // delete product 
 router.post('/admin/deleteProduct/:id', adminContoller.deleteProduct);
